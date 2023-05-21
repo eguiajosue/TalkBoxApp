@@ -9,6 +9,12 @@ import CreatePhrase from "./screens/CreatePhrase";
 import Welcome from "./screens/Welcome";
 import SignUp from "./screens/SignUp";
 import CreateUser from "./screens/CreateUser";
+import Sustantivos from "./screens/categories/Sustantivos";
+import Adjetivos from "./screens/categories/Adjetivos";
+import Conjugations from "./screens/categories/Conjugations";
+import Idioms from "./screens/categories/Idioms";
+import Pronouns from "./screens/categories/Pronouns";
+import Verbs from "./screens/categories/Verbs";
 // import auth from "@react-native-firebase/auth";
 
 export default function App() {
@@ -30,6 +36,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Verbos" component={Verbs} />
+        <Stack.Screen name="Adjetivos" component={Adjetivos} />
+        <Stack.Screen name="Sustantivos" component={Sustantivos} />
+        <Stack.Screen name="Conjugaciones" component={Conjugations} />
+        <Stack.Screen name="Locuciones" component={Idioms} />
+        <Stack.Screen name="Pronombres" component={Pronouns} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />

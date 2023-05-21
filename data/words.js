@@ -1,7 +1,7 @@
 export const sustantivos = [
   {
     title: "Gente",
-    words: [
+    data: [
       "humanidad",
       "humano",
       "persona",
@@ -27,7 +27,7 @@ export const sustantivos = [
   },
   {
     title: "Cuerpo humano y salud",
-    words: [
+    data: [
       "cuerpo",
       "pierna",
       "pie",
@@ -85,7 +85,7 @@ export const sustantivos = [
   },
   {
     title: "Familia y otras relaciones",
-    words: [
+    data: [
       "familia",
       "amigo",
       "amiga",
@@ -121,7 +121,7 @@ export const sustantivos = [
   },
   {
     title: "Vida",
-    words: [
+    data: [
       "criatura",
       "especie",
       "ser",
@@ -133,7 +133,7 @@ export const sustantivos = [
   },
   {
     title: "Geografía",
-    words: [
+    data: [
       "naturaleza",
       "campo",
       "bosque",
@@ -156,7 +156,7 @@ export const sustantivos = [
   },
   {
     title: "Animales",
-    words: [
+    data: [
       "animal",
       "perro",
       "gato",
@@ -210,7 +210,7 @@ export const sustantivos = [
   },
   {
     title: "Plantas y Alimentos",
-    words: [
+    data: [
       "alimento",
       "comida",
       "bebida",
@@ -258,7 +258,7 @@ export const sustantivos = [
   },
   {
     title: "Tiempo",
-    words: [
+    data: [
       "tiempo",
       "calendario",
       "edad",
@@ -298,7 +298,7 @@ export const sustantivos = [
   },
   {
     title: "Espacio",
-    words: [
+    data: [
       "ambiente",
       "espacio",
       "entorno",
@@ -338,7 +338,7 @@ export const sustantivos = [
   },
   {
     title: "Materiales",
-    words: [
+    data: [
       "calor",
       "agua",
       "hielo",
@@ -363,7 +363,7 @@ export const sustantivos = [
   },
   {
     title: "Medidas",
-    words: [
+    data: [
       "peso",
       "metro",
       "milímetro",
@@ -379,7 +379,7 @@ export const sustantivos = [
   },
   {
     title: "Sociedad",
-    words: [
+    data: [
       "sociedad",
       "comunidad",
       "reunión",
@@ -440,7 +440,7 @@ export const sustantivos = [
   },
   {
     title: "Economía",
-    words: [
+    data: [
       "economía",
       "consumo",
       "demanda",
@@ -469,7 +469,7 @@ export const sustantivos = [
   },
   {
     title: "Hogar",
-    words: [
+    data: [
       "escritorio",
       "silla",
       "mesa",
@@ -495,7 +495,7 @@ export const sustantivos = [
   },
   {
     title: "Herramientas",
-    words: [
+    data: [
       "aparato",
       "cámara",
       "aguja",
@@ -528,7 +528,7 @@ export const sustantivos = [
   },
   {
     title: "Ropa",
-    words: [
+    data: [
       "ropa",
       "prenda",
       "manga",
@@ -558,7 +558,7 @@ export const sustantivos = [
   },
   {
     title: "Transporte",
-    words: [
+    data: [
       "transporte",
       "transporte público",
       "transporte privado",
@@ -591,7 +591,7 @@ export const sustantivos = [
   },
   {
     title: "Lenguaje",
-    words: [
+    data: [
       "número",
       "alfabeto",
       "símbolo",
@@ -627,7 +627,7 @@ export const sustantivos = [
   },
   {
     title: "Colores",
-    words: [
+    data: [
       "color",
       "blanco",
       "negro",
@@ -648,7 +648,7 @@ export const sustantivos = [
   },
   {
     title: "Actividades",
-    words: [
+    data: [
       "cultura",
       "autor",
       "actuación",
@@ -720,11 +720,11 @@ export const sustantivos = [
   },
   {
     title: "Números",
-    words: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+    data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
   },
   {
     title: "Espacio y Cantidad",
-    words: [
+    data: [
       "lugar",
       "posición",
       "movimiento",
@@ -748,7 +748,7 @@ export const sustantivos = [
   },
   {
     title: "Sustantivos abstractos",
-    words: [
+    data: [
       "cosa",
       "aspecto",
       "contenido",
@@ -895,7 +895,7 @@ export const sustantivos = [
 export const adjetivos = [
   {
     title: "Calidad",
-    words: [
+    data: [
       "bueno",
       "buen",
       "malo",
@@ -984,7 +984,7 @@ export const adjetivos = [
   },
   {
     title: "Forma",
-    words: [
+    data: [
       "alto",
       "bajo",
       "gran",
@@ -999,7 +999,7 @@ export const adjetivos = [
   },
   {
     title: "Sensoriales",
-    words: [
+    data: [
       "caliente",
       "frío",
       "ligero",
@@ -1032,7 +1032,7 @@ export const adjetivos = [
   },
   {
     title: "Sentimientos",
-    words: [
+    data: [
       "feliz",
       "triste",
       "solo",
@@ -1060,7 +1060,7 @@ export const adjetivos = [
   },
   {
     title: "Ordales",
-    words: [
+    data: [
       "primer",
       "primero",
       "primera",
@@ -1077,18 +1077,18 @@ export const adjetivos = [
   },
   {
     title: "Posesivos",
-    words: ["mi", "tu", "su", "nuestro", "nuestra", "vuestro", "vuestra"],
+    data: ["mi", "tu", "su", "nuestro", "nuestra", "vuestro", "vuestra"],
   },
 ];
 
 export const verbos = [
   {
     title: "Auxiliares",
-    words: ["ser", "estar", "haber"],
+    data: ["ser", "estar", "haber"],
   },
   {
     title: "Existencia",
-    words: [
+    data: [
       "aparecer",
       "desaparecer",
       "existir",
@@ -1101,7 +1101,7 @@ export const verbos = [
   },
   {
     title: "Movimiento",
-    words: [
+    data: [
       "ir",
       "venir",
       "volver",
@@ -1142,7 +1142,7 @@ export const verbos = [
   },
   {
     title: "Sensaciones",
-    words: [
+    data: [
       "sentir",
       "ver",
       "oír",
@@ -1177,7 +1177,7 @@ export const verbos = [
   },
   {
     title: "Actividades",
-    words: [
+    data: [
       "comunicarse",
       "afirmar",
       "negar",
@@ -1303,7 +1303,7 @@ export const verbos = [
 export const preposiciones = [
   {
     title: "Preposiciones",
-    words: [
+    data: [
       "a",
       "al",
       "ante",
@@ -1332,7 +1332,7 @@ export const preposiciones = [
 export const conjugaciones = [
   {
     title: "Conjugaciones",
-    words: [
+    data: [
       "aunque",
       "como",
       "cuando",
@@ -1355,7 +1355,7 @@ export const conjugaciones = [
 export const pronombres = [
   {
     title: "Personales",
-    words: [
+    data: [
       "yo",
       "tú",
       "vos",
@@ -1388,7 +1388,7 @@ export const pronombres = [
   },
   {
     title: "Posesivos",
-    words: [
+    data: [
       "mío",
       "mía",
       "tuyo",
@@ -1405,7 +1405,7 @@ export const pronombres = [
   },
   {
     title: "Indefinidos",
-    words: [
+    data: [
       "un",
       "una",
       "uno",
@@ -1433,7 +1433,7 @@ export const pronombres = [
   },
   {
     title: "Interrogativos",
-    words: [
+    data: [
       "cuál",
       "cuánto",
       "quién",
@@ -1461,7 +1461,7 @@ export const pronombres = [
 export const locuciones = [
   {
     title: "Locuciones",
-    words: [
+    data: [
       "gracias",
       "acerca de",
       "a lo mejor",
