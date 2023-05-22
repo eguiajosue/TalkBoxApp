@@ -11,10 +11,26 @@ import { preposiciones } from "../../data/words";
 const styles = require("../../constants/styles");
 
 const Prepositions = () => {
+  const data = [
+    {
+      title: "Personas",
+      data: [
+        "Mamá",
+        "Papá",
+        "Hermano",
+        "Hermana",
+        "Señor",
+        "Señora",
+        "Niño",
+        "Niña",
+        "Amigo",
+        "Amiga",
+      ],
+    },
+  ];
+
   return (
-    <SafeAreaView
-      style={[styles.wordContainer, { marginTop: StatusBar.currentHeight }]}
-    >
+    <View>
       <SectionList
         sections={preposiciones}
         stickySectionHeadersEnabled={true}
@@ -27,7 +43,7 @@ const Prepositions = () => {
           <Text style={styles.wordHeader}>{title}</Text>
         )}
       ></SectionList>
-    </SafeAreaView>
+    </View>
   );
 };
 

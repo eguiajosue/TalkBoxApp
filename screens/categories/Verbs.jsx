@@ -5,30 +5,44 @@ import {
   View,
   SectionList,
   StatusBar,
+  FlatList,
 } from "react-native";
 import React from "react";
-import { verbos } from "../../data/words";
-const styles = require("../../constants/styles");
+import Word from "../../components/Word";
 
 const Verbs = () => {
+  const data = [
+    { id: "1", title: "Jugar" },
+    { id: "2", title: "Bailar" },
+    { id: "3", title: "Cantar" },
+    { id: "4", title: "Reir" },
+    { id: "5", title: "Estudiar" },
+    { id: "6", title: "Leer" },
+    { id: "7", title: "Escribir" },
+    { id: "8", title: "Hermana" },
+  ];
+
   return (
-    <SafeAreaView
-      style={[styles.wordContainer, { marginTop: StatusBar.currentHeight }]}
-    >
-      <SectionList
-        sections={verbos}
-        stickySectionHeadersEnabled={true}
-        renderItem={({ item }) => (
-          <View style={styles.wordItem}>
-            <Text style={styles.wordTitle}>{item}</Text>
-          </View>
-        )}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.wordHeader}>{title}</Text>
-        )}
-      ></SectionList>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        numColumns={2}
+        horizontal={false}
+        renderItem={({ item }) => <Word title={item.title} />}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.flatListContent}
+      />
+    </View>
   );
 };
 
 export default Verbs;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  flatListContent: {
+    justifyContent: "center",
+  },
+});

@@ -3,39 +3,214 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  View,
   StatusBar,
+  View,
   FlatList,
-  SectionList,
   TouchableOpacity,
 } from "react-native";
-import {
-  sustantivos,
-  adjetivos,
-  conjugaciones,
-  locuciones,
-  preposiciones,
-  pronombres,
-  verbos,
-} from "../data/words";
-import WordListItem from "../components/WordListItem";
-import WordListHeader from "../components/WordListHeader";
+import { Tab, TabView } from "@rneui/themed";
+import * as Speech from "expo-speech";
 
 const CreatePhrase = () => {
+  const [index, setIndex] = useState(0);
+
+  const palabrasPronombres = [
+    { title: "Yo" },
+    { title: "Tú" },
+    { title: "Él/Ella" },
+    { title: "Nosotros/Nosotras" },
+    { title: "Ellos/Ellas" },
+    // Agrega más pronombres aquí
+  ];
+
+  const palabrasPreposiciones = [
+    { title: "A" },
+    { title: "De" },
+    { title: "En" },
+    { title: "Por" },
+    { title: "Para" },
+    { title: "Con" },
+    // Agrega más preposiciones aquí
+  ];
+
+  const palabrasVerbos = [
+    { title: "Correr" },
+    { title: "Saltar" },
+    { title: "Hablar" },
+    { title: "Comer" },
+    { title: "Dormir" },
+    { title: "Estudiar" },
+    // Agrega más verbos aquí
+  ];
+
+  const palabrasTiempo = [
+    { title: "Día" },
+    { title: "Noche" },
+    { title: "Mañana" },
+    { title: "Tarde" },
+    { title: "Semana" },
+    { title: "Mes" },
+    // Agrega más palabras relacionadas con el tiempo aquí
+  ];
+
+  const palabrasAnimales = [
+    { title: "Perro" },
+    { title: "Gato" },
+    { title: "Elefante" },
+    { title: "León" },
+    { title: "Pájaro" },
+    { title: "Tigre" },
+    // Agrega más animales aquí
+  ];
+
+  const palabrasComida = [
+    { title: "Manzana" },
+    { title: "Pizza" },
+    { title: "Arroz" },
+    { title: "Hamburguesa" },
+    { title: "Ensalada" },
+    { title: "Helado" },
+    // Agrega más alimentos aquí
+  ];
+
+  const palabrasPartesCasa = [
+    { title: "Sala" },
+    { title: "Cocina" },
+    { title: "Dormitorio" },
+    { title: "Baño" },
+    { title: "Comedor" },
+    { title: "Jardín" },
+    // Agrega más partes de la casa aquí
+  ];
+
+  const palabrasPartesCuerpo = [
+    { title: "Cabeza" },
+    { title: "Brazo" },
+    { title: "Pierna" },
+    { title: "Ojo" },
+    { title: "Boca" },
+    { title: "Mano" },
+    // Agrega más partes del cuerpo aquí
+  ];
+
+  const palabrasEnfermedades = [
+    { title: "Gripe" },
+    { title: "Resfriado" },
+    { title: "Fiebre" },
+    { title: "Dolor de cabeza" },
+    { title: "Dolor de estómago" },
+    { title: "Asma" },
+    // Agrega más enfermedades aquí
+  ];
+
+  const renderButton = ({ item }) => {
+    // Función para manejar el evento onPress del botón
+    const handleButtonPress = () => {
+      Speech.speak(item.title);
+    };
+
+    return (
+      <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
+        <Text style={styles.buttonText}>{item.title}</Text>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <SectionList
-        sections={sustantivos}
-        stickySectionHeadersEnabled={true}
-        renderItem={({ item }) => (
-          <View style={styles.item}>
-            <Text style={styles.title}>{item}</Text>
-          </View>
-        )}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.header}>{title}</Text>
-        )}
-      ></SectionList>
+      <Tab
+        value={index}
+        onChange={(e) => setIndex(e)}
+        indicatorStyle={{
+          backgroundColor: "white",
+          height: 3,
+        }}
+        variant="primary"
+        scrollable={true}
+        titleStyle={styles.tabTitle}
+      >
+        <Tab.Item title="Pronombres" />
+        <Tab.Item title="Preposiciones" />
+        <Tab.Item title="Verbos" />
+        <Tab.Item title="Tiempo" />
+        <Tab.Item title="Animales" />
+        <Tab.Item title="Comida" />
+        <Tab.Item title="Casa" />
+        <Tab.Item title="Cuerpo" />
+        <Tab.Item title="Enfermedades" />
+      </Tab>
+
+      <TabView
+        value={index}
+        onChange={setIndex}
+        animationType="spring"
+        containerStyle={{}}
+      >
+        <TabView.Item>
+          <FlatList
+            data={palabrasPronombres}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasPreposiciones}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasVerbos}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasTiempo}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasAnimales}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasComida}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasPartesCasa}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasPartesCuerpo}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        <TabView.Item>
+          <FlatList
+            data={palabrasEnfermedades}
+            renderItem={renderButton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </TabView.Item>
+        {/* Agrega más TabView.Item con FlatList para los otros arrays de palabras */}
+      </TabView>
     </SafeAreaView>
   );
 };
@@ -45,20 +220,21 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
   },
-  item: {
-    flex: 0.5,
-    marginHorizontal: 16,
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-    borderRadius: 25,
+  button: {
+    backgroundColor: "#DEC1B6",
+    paddingVertical: 30,
+    margin: 5,
+    borderRadius: 10,
+    width: 400,
+    textAlign: "center",
   },
-  header: {
-    fontSize: 32,
-    backgroundColor: "#fff",
-  },
-  title: {
+  buttonText: {
+    textAlign: "center",
     fontSize: 24,
+  },
+  tabTitle: {
+    fontSize: 24,
+    textAlign: "center",
     textTransform: "capitalize",
   },
 });

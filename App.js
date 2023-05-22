@@ -36,18 +36,18 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="CreateUser" component={CreateUser} />
+        <Stack.Screen name="CreatePhrase" component={CreatePhrase} />
         <Stack.Screen name="Verbos" component={Verbs} />
         <Stack.Screen name="Adjetivos" component={Adjetivos} />
         <Stack.Screen name="Sustantivos" component={Sustantivos} />
         <Stack.Screen name="Conjugaciones" component={Conjugations} />
         <Stack.Screen name="Locuciones" component={Idioms} />
         <Stack.Screen name="Pronombres" component={Pronouns} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="CreateUser" component={CreateUser} />
-        <Stack.Screen name="CreatePhrase" component={CreatePhrase} />
         {/* {user ? (
         ) : (
           <>

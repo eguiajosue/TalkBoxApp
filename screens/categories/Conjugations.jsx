@@ -11,10 +11,25 @@ import { conjugaciones } from "../../data/words";
 const styles = require("../../constants/styles");
 
 const Conjugations = () => {
+  const data = [
+    {
+      title: "Personas",
+      data: [
+        "Mamá",
+        "Papá",
+        "Hermano",
+        "Hermana",
+        "Señor",
+        "Señora",
+        "Niño",
+        "Niña",
+        "Amigo",
+        "Amiga",
+      ],
+    },
+  ];
   return (
-    <SafeAreaView
-      style={[styles.wordContainer, { marginTop: StatusBar.currentHeight }]}
-    >
+    <View>
       <SectionList
         sections={conjugaciones}
         stickySectionHeadersEnabled={true}
@@ -27,7 +42,7 @@ const Conjugations = () => {
           <Text style={styles.wordHeader}>{title}</Text>
         )}
       ></SectionList>
-    </SafeAreaView>
+    </View>
   );
 };
 
