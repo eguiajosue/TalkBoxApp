@@ -13,7 +13,13 @@ export default [
   { id: "12", title: "Que tengas un excelente día", category: ["social"] },
   { id: "13", title: "Nos vemos", category: ["social"] },
   { id: "14", title: "¿Qué haces?", category: ["questions"] },
-  { id: "15", title: "¿Cuál es tu número?", category: ["questions"] },
+  {
+    id: "15",
+    title: "¿Cuál es tu número de teléfono?",
+    category: ["questions"],
+  },
   { id: "16", title: "¿A donde vas?", category: ["questions"] },
   { id: "17", title: "Perro", category: ["animals"] },
 ];
+
+// Saludos, despedidas, preguntas comunica,

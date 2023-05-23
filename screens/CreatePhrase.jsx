@@ -216,7 +216,6 @@ const CreatePhrase = () => {
             keyExtractor={(item, index) => index.toString()}
           />
         </TabView.Item>
-        {/* Agrega más TabView.Item con FlatList para los otros arrays de palabras */}
       </TabView>
 
       <FAB

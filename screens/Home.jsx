@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 import {
   StyleSheet,
   Text,
@@ -60,6 +60,7 @@ const Home = ({ navigation }) => {
 
       <View style={styles.tabContainer}>
         <Text style={styles.subtitle}>Frases comunes</Text>
+
         <CommonPhrasesList />
       </View>
     </SafeAreaView>

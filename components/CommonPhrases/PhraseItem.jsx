@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
+import * as Speech from "expo-speech";
 
 const PhraseItem = ({ title, backgroundColor }) => {
   return (
