@@ -17,13 +17,6 @@ import AvatarIcon from "../assets/images/avatar.png";
 import renderSeparator from "../components/renderSeparator";
 
 const Home = ({ navigation }) => {
-  const [activeCategory, setActiveCategory] = useState("Social");
-
-  const handleActiveCategory = (item) => {
-    setActiveCategory(item);
-    console.log(activeCategory.title);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <View

@@ -17,9 +17,12 @@ const CreatePhrase = () => {
   const palabrasPronombres = [
     { title: "Yo" },
     { title: "Tú" },
-    { title: "Él/Ella" },
-    { title: "Nosotros/Nosotras" },
-    { title: "Ellos/Ellas" },
+    { title: "Él" },
+    { title: "Ella" },
+    { title: "Nosotros" },
+    { title: "Nosotras" },
+    { title: "Ellos" },
+    { title: "Ellas" },
     // Agrega más pronombres aquí
   ];
 
