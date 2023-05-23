@@ -37,7 +37,7 @@ const SignUp = ({ navigation }) => {
     return errors;
   };
 
-  const handlerRegister = () => {
+  const handlerRegister = (navigation) => {
     const errors = getErrors(email, password, confirmPassword);
 
     if (Object.keys(errors).length > 0) {
@@ -47,6 +47,7 @@ const SignUp = ({ navigation }) => {
     } else {
       setErrors({});
       setShowErrors(false);
+      navigation.navigate("Home");
       console.log("Registered");
     }
   };
@@ -114,7 +115,7 @@ const SignUp = ({ navigation }) => {
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handlerRegister()}
+            onPress={() => handlerRegister(navigation)}
           >
             <Text style={{ color: "#fff", textAlign: "center" }}>
               Crear cuenta

@@ -8,7 +8,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { Tab, TabView } from "@rneui/themed";
+import { Tab, TabView, FAB } from "@rneui/themed";
 import * as Speech from "expo-speech";
 
 const CreatePhrase = () => {
@@ -119,6 +119,10 @@ const CreatePhrase = () => {
     );
   };
 
+  const stopVoice = () => {
+    Speech.stop();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Tab
@@ -214,6 +218,14 @@ const CreatePhrase = () => {
         </TabView.Item>
         {/* Agrega más TabView.Item con FlatList para los otros arrays de palabras */}
       </TabView>
+
+      <FAB
+        icon={{ name: "stop", color: "white" }}
+        size="large"
+        placement="right"
+        color="#e63946"
+        onPress={stopVoice}
+      />
     </SafeAreaView>
   );
 };

@@ -40,7 +40,12 @@ const CreateUser = ({ navigation }) => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("Home");
+          }}
+        >
           <Text style={{ color: "#fff", textAlign: "center" }}>Continuar</Text>
         </TouchableOpacity>
       </View>
