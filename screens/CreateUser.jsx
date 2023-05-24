@@ -18,6 +18,26 @@ const CreateUser = ({ navigation }) => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
 
+  const [errors, setErrors] = useState({});
+  const [showErrors, setShowErrors] = useState(false);
+
+  const getErrors = (name, age, gender) => {
+    const errors = {};
+    if (!name) {
+      errors.name = "Porfavor ingrese un correo electrónico";
+    }
+    if (!age) {
+      errors.age = "Porfavor ingrese una edad";
+    } else if (age < 0 || gender > 100) {
+      errors.age = "Porfavor ingrese una edad válida";
+    }
+    if (!gender) {
+      errors.gender = "Porfavor ingrese un género";
+    }
+
+    return errors;
+  };
+
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -26,11 +46,21 @@ const CreateUser = ({ navigation }) => {
   ]);
 
   const register = () => {
-    navigation.navigate("Home", {
-      name: name,
-      age: age,
-      gender: gender,
-    });
+    const errors = getErrors(name, age, gender);
+
+    if (Object.keys(errors).length > 0) {
+      setShowErrors(true);
+      setErrors(showErrors && errors);
+    } else {
+      setErrors({});
+      setShowErrors(false);
+      navigation.navigate("Home", {
+        name: name,
+        age: age,
+        gender: gender,
+      });
+      console.log("Registered");
+    }
   };
 
   return (
@@ -51,6 +81,7 @@ const CreateUser = ({ navigation }) => {
               value={name}
               onChangeText={(value) => setName(value)}
             />
+            {errors.name && <Text style={styles.error}>{errors.name}</Text>}
           </View>
 
           <View style={styles.section}>
@@ -61,6 +92,7 @@ const CreateUser = ({ navigation }) => {
               onChangeText={(value) => setAge(value)}
               keyboardType="number-pad"
             />
+            {errors.age && <Text style={styles.error}>{errors.age}</Text>}
           </View>
 
           <View style={styles.section}>
@@ -70,6 +102,7 @@ const CreateUser = ({ navigation }) => {
               value={gender}
               onChangeText={(value) => setGender(value)}
             />
+            {errors.gender && <Text style={styles.error}>{errors.gender}</Text>}
           </View>
         </View>
       </View>
@@ -125,6 +158,12 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: 30,
     borderRadius: 15,
+  },
+  error: {
+    color: "red",
+    opacity: 0.5,
+    fontSize: 10,
+    textAlign: "right",
   },
 });
 
