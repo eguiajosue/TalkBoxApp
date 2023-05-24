@@ -1,4 +1,4 @@
-export default [
+export const wordsCategories = [
   {
     id: "actions",
     title: "Acciones",
@@ -53,6 +53,37 @@ export default [
     title: "Comida",
     color: "#cd90a2",
     secondaryColor: "#ffb3c9",
+    selected: false,
+  },
+];
+
+export const commonPhrasesCategory = [
+  {
+    id: "saludos",
+    title: "Saludos",
+    color: "#6d97d8",
+    secondaryColor: "#80a1ff",
+    selected: false,
+  },
+  {
+    id: "despedidas",
+    title: "Despedidas",
+    color: "#c6ec67",
+    secondaryColor: "#c2ff6f",
+    selected: false,
+  },
+  {
+    id: "agradecimientos",
+    title: "Agradecimientos",
+    color: "#efbf43",
+    secondaryColor: "#ffe446",
+    selected: false,
+  },
+  {
+    id: "preguntas",
+    title: "Preguntas",
+    color: "#dfc065",
+    secondaryColor: "#ffed73",
     selected: false,
   },
 ];

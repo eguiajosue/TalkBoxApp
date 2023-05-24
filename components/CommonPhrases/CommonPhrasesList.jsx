@@ -7,13 +7,15 @@ import {
 } from "react-native";
 import React from "react";
 import commonPhrases from "../../data/commonPhrases";
-import categories from "../../data/categories";
+import { wordsCategories, commonPhrasesCategory } from "../../data/categories";
 import PhraseItem from "./PhraseItem";
 import * as Speech from "expo-speech";
 
 const CommonPhrasesList = () => {
   const getBackgroundColor = (category) => {
-    const foundCategory = categories.find((cat) => cat.id === category);
+    const foundCategory = commonPhrasesCategory.find(
+      (cat) => cat.id === category
+    );
     return foundCategory ? foundCategory.color : "#fff"; // Puedes establecer un color predeterminado en caso de no encontrar la categoría
   };
 
@@ -26,7 +28,7 @@ const CommonPhrasesList = () => {
       <TouchableOpacity
         style={[
           styles.button,
-          { backgroundColor: getBackgroundColor(item.category[0]) },
+          { backgroundColor: getBackgroundColor(item.category) },
         ]}
         onPress={handleButtonPress}
       >
@@ -35,29 +37,30 @@ const CommonPhrasesList = () => {
     );
   };
 
+  const styles = StyleSheet.create({
+    button: {
+      padding: 10,
+      borderRadius: 10,
+      marginVertical: 5,
+    },
+    text: {
+      textAlign: "right",
+      textTransform: "uppercase",
+      fontSize: 20,
+      fontWeight: "500",
+    },
+  });
+
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={commonPhrases}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
 };
 
 export default CommonPhrasesList;
-
-const styles = StyleSheet.create({
-  button: {
-    borderWidth: 0.1,
-    marginVertical: 5,
-    padding: 30,
-  },
-  text: {
-    textAlign: "right",
-    textTransform: "uppercase",
-    fontSize: 20,
-    fontWeight: "500",
-  },
-});
