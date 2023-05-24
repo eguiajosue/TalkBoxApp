@@ -1,10 +1,8 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SocialIcon } from "@rneui/base";
-import { Touchable } from "react-native";
 
 const Login = ({ navigation }) => {
   return (
