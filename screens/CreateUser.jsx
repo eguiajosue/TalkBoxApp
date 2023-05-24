@@ -7,14 +7,22 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "react-native";
 import { Icon } from "@rneui/base";
+import DropDownPicker from "react-native-dropdown-picker";
 
 const CreateUser = ({ navigation }) => {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: "Hombre", value: "hombre" },
+    { label: "Mujer", value: "mujer" },
+  ]);
+
   return (
-    <SafeAreaView style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View>
         <Text style={styles.title}>Creación de usuario</Text>
         <Text style={styles.comment}>
@@ -36,10 +44,21 @@ const CreateUser = ({ navigation }) => {
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Genero: </Text>
-            <TextInput style={styles.input} />
+            <DropDownPicker
+              style={{ zIndex: 10 }}
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
+              listMode="FLATLIST"
+            />
           </View>
         </View>
+      </View>
 
+      <View>
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -49,7 +68,7 @@ const CreateUser = ({ navigation }) => {
           <Text style={{ color: "#fff", textAlign: "center" }}>Continuar</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -59,6 +78,7 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight,
     padding: 20,
     backgroundColor: "#fff",
+    justifyContent: "space-evenly",
   },
   form: {
     display: "flex",
