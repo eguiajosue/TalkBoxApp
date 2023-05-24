@@ -14,12 +14,24 @@ import { Icon } from "@rneui/base";
 import DropDownPicker from "react-native-dropdown-picker";
 
 const CreateUser = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
     { label: "Hombre", value: "hombre" },
     { label: "Mujer", value: "mujer" },
   ]);
+
+  const register = () => {
+    navigation.navigate("Home", {
+      name: name,
+      age: age,
+      gender: gender,
+    });
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
@@ -34,37 +46,36 @@ const CreateUser = ({ navigation }) => {
         <View>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Nombre: </Text>
-            <TextInput style={styles.input} />
+            <TextInput
+              style={styles.input}
+              value={name}
+              onChangeText={(value) => setName(value)}
+            />
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Edad: </Text>
-            <TextInput style={styles.input} />
+            <TextInput
+              style={styles.input}
+              value={age}
+              onChangeText={(value) => setAge(value)}
+              keyboardType="number-pad"
+            />
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Genero: </Text>
-            <DropDownPicker
-              style={{ zIndex: 10 }}
-              open={open}
-              value={value}
-              items={items}
-              setOpen={setOpen}
-              setValue={setValue}
-              setItems={setItems}
-              listMode="FLATLIST"
+            <TextInput
+              style={styles.input}
+              value={gender}
+              onChangeText={(value) => setGender(value)}
             />
           </View>
         </View>
       </View>
 
       <View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate("Home");
-          }}
-        >
+        <TouchableOpacity style={styles.button} onPress={register}>
           <Text style={{ color: "#fff", textAlign: "center" }}>Continuar</Text>
         </TouchableOpacity>
       </View>

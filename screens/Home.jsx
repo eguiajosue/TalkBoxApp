@@ -16,8 +16,11 @@ import CommonPhrasesList from "../components/CommonPhrases/CommonPhrasesList";
 import AvatarIcon from "../assets/images/avatar.png";
 import renderSeparator from "../components/renderSeparator";
 import commonPhrases from "../data/commonPhrases";
+import { useRoute } from "@react-navigation/native";
 
 const Home = ({ navigation }) => {
+  const route = useRoute();
+
   const [status, setStatus] = useState("todos");
   const [dataList, setDataList] = useState(commonPhrases);
 
@@ -46,7 +49,9 @@ const Home = ({ navigation }) => {
           rounded
           containerStyle={{ backgroundColor: "#c3c3c3", marginLeft: 13 }}
         />
-        <Text style={styles.title}>Bienvenido Usuario!</Text>
+        <Text style={styles.title}>
+          Bienvenido <Text>{route.params.name}</Text>!
+        </Text>
       </View>
       <View style={styles.words}>
         <TextInput
