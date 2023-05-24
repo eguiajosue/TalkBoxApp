@@ -59,6 +59,13 @@ export const wordsCategories = [
 
 export const commonPhrasesCategory = [
   {
+    id: "todos",
+    title: "Todos",
+    color: "#a1a1a1",
+    secondaryColor: "#c1c1c1",
+    selected: false,
+  },
+  {
     id: "saludos",
     title: "Saludos",
     color: "#6d97d8",
