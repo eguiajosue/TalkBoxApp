@@ -10,7 +10,7 @@ import {
   FlatList,
 } from "react-native";
 import { Avatar } from "@rneui/base";
-import categories from "../data/categories";
+import { commonPhrasesCategory, wordsCategories } from "../data/categories";
 import TabItem from "../components/TabItem";
 import CommonPhrasesList from "../components/CommonPhrases/CommonPhrasesList";
 import AvatarIcon from "../assets/images/avatar.png";
@@ -48,19 +48,20 @@ const Home = ({ navigation }) => {
 
       <View style={styles.tabContainer}>
         <Text style={styles.subtitle}>Categorias</Text>
-        <FlatList
-          data={categories}
-          renderItem={({ item }) => <TabItem item={item} />}
-          keyExtractor={(item) => item.id}
-          horizontal
-          ItemSeparatorComponent={renderSeparator}
-          showsHorizontalScrollIndicator={false}
-        />
+        <View>
+          <FlatList
+            data={commonPhrasesCategory}
+            renderItem={({ item }) => <TabItem item={item} />}
+            keyExtractor={(item) => item.id}
+            horizontal
+            ItemSeparatorComponent={renderSeparator}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
       </View>
 
-      <View style={styles.tabContainer}>
+      <View style={styles.commonPhrasesContainer}>
         <Text style={styles.subtitle}>Frases comunes</Text>
-
         <CommonPhrasesList />
       </View>
     </SafeAreaView>
@@ -102,6 +103,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     backgroundColor: "#e63946",
+  },
+  commonPhrasesContainer: {
+    flex: 1,
+    paddingHorizontal: 10,
+    marginBottom: 40,
   },
 });
 
