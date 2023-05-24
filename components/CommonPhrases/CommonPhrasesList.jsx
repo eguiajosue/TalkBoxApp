@@ -11,7 +11,7 @@ import { wordsCategories, commonPhrasesCategory } from "../../data/categories";
 import PhraseItem from "./PhraseItem";
 import * as Speech from "expo-speech";
 
-const CommonPhrasesList = () => {
+const CommonPhrasesList = ({ data }) => {
   const getBackgroundColor = (category) => {
     const foundCategory = commonPhrasesCategory.find(
       (cat) => cat.id === category
@@ -54,7 +54,7 @@ const CommonPhrasesList = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={commonPhrases}
+        data={data}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
