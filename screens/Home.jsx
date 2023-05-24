@@ -15,8 +15,26 @@ import TabItem from "../components/TabItem";
 import CommonPhrasesList from "../components/CommonPhrases/CommonPhrasesList";
 import AvatarIcon from "../assets/images/avatar.png";
 import renderSeparator from "../components/renderSeparator";
+import commonPhrases from "../data/commonPhrases";
 
 const Home = ({ navigation }) => {
+  const [status, setStatus] = useState("todos");
+  const [dataList, setDataList] = useState(commonPhrases);
+
+  const setStatusFilter = (status) => {
+    if (status !== "todos") {
+      setDataList([...commonPhrases.filter((e) => e.category === status)]);
+    } else {
+      setDataList(commonPhrases);
+    }
+    setStatus(status);
+  };
+
+  const handleStatus = ({ id }) => {
+    setStatus(setStatusFilter(id));
+    console.log(id);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -51,7 +69,9 @@ const Home = ({ navigation }) => {
         <View>
           <FlatList
             data={commonPhrasesCategory}
-            renderItem={({ item }) => <TabItem item={item} />}
+            renderItem={({ item }) => (
+              <TabItem item={item} onPress={() => handleStatus(item)} />
+            )}
             keyExtractor={(item) => item.id}
             horizontal
             ItemSeparatorComponent={renderSeparator}
@@ -62,7 +82,7 @@ const Home = ({ navigation }) => {
 
       <View style={styles.commonPhrasesContainer}>
         <Text style={styles.subtitle}>Frases comunes</Text>
-        <CommonPhrasesList />
+        <CommonPhrasesList data={dataList} />
       </View>
     </SafeAreaView>
   );
