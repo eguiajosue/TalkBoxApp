@@ -8,8 +8,9 @@ import {
   TextInput,
   View,
   FlatList,
+  LayoutAnimation,
 } from "react-native";
-import { Avatar } from "@rneui/base";
+import { Avatar, Icon } from "@rneui/base";
 import { commonPhrasesCategory, wordsCategories } from "../data/categories";
 import TabItem from "../components/TabItem";
 import CommonPhrasesList from "../components/CommonPhrases/CommonPhrasesList";
@@ -17,12 +18,38 @@ import AvatarIcon from "../assets/images/avatar.png";
 import renderSeparator from "../components/renderSeparator";
 import commonPhrases from "../data/commonPhrases";
 import { useRoute } from "@react-navigation/native";
+import * as Speech from "expo-speech";
+
+const layoutAnimationConfig = {
+  duration: 300,
+  update: {
+    type: LayoutAnimation.Types.easeInEaseOut,
+  },
+  delete: {
+    duration: 100,
+    type: LayoutAnimation.Types.easeInEaseOut,
+    property: LayoutAnimation.Properties.opacity,
+  },
+};
 
 const Home = ({ navigation }) => {
+  const words = [
+    { id: 1, palabra: "Ipsum" },
+    { id: 2, palabra: "occaecat" },
+    { id: 3, palabra: "sint" },
+    { id: 4, palabra: "laborum" },
+  ];
+
   const route = useRoute();
 
+  // Tabs
   const [status, setStatus] = useState("todos");
+
+  // Frases comunes
   const [dataList, setDataList] = useState(commonPhrases);
+
+  // Palabras en para realizar una frase personalizada
+  const [wordsData, setWordsData] = useState(words);
 
   const setStatusFilter = (status) => {
     if (status !== "todos") {
@@ -35,7 +62,30 @@ const Home = ({ navigation }) => {
 
   const handleStatus = ({ id }) => {
     setStatus(setStatusFilter(id));
-    console.log(id);
+  };
+
+  const muteVoice = () => {
+    Speech.stop();
+  };
+
+  const deleteWordByID = (id) => {
+    const filteredWords = wordsData.filter((word) => word.id !== id);
+    setWordsData(filteredWords);
+    LayoutAnimation.configureNext(layoutAnimationConfig);
+  };
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.wordContainer}>
+        <Text style={styles.wordText}>Lorem</Text>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={() => deleteWordByID(item.id)}
+        >
+          <Icon name="close" color="#fff" />
+        </TouchableOpacity>
+      </View>
+    );
   };
 
   return (
@@ -50,24 +100,66 @@ const Home = ({ navigation }) => {
           containerStyle={{ backgroundColor: "#c3c3c3", marginLeft: 13 }}
         />
         <Text style={styles.title}>
-          Bienvenido <Text>{route.params.name}</Text>!
+          Bienvenido <Text style={styles.name}>{route.params?.name}</Text>!
         </Text>
       </View>
+
       <View style={styles.words}>
-        <TextInput
-          style={styles.input}
-          placeholder="¿Que desea comunicar?"
-          editable={false}
+        <FlatList
+          style={{ padding: 15 }}
+          data={wordsData}
+          renderItem={renderItem}
+          horizontal
+          ItemSeparatorComponent={<View style={{ marginHorizontal: 2.5 }} />}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id.toString()}
         />
-        <TouchableOpacity
-          style={styles.createPhraseButton}
-          onPress={() => {
-            navigation.navigate("CreatePhrase");
-          }}
-        >
-          <Text style={{ color: "#fff" }}>Crear frase</Text>
-        </TouchableOpacity>
+
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#e63946",
+              borderRadius: 10,
+              marginHorizontal: 2,
+            }}
+          >
+            <Icon
+              color="#fff"
+              name="volume-up"
+              style={{
+                padding: 10,
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => muteVoice()}
+            style={{
+              backgroundColor: "#e63946",
+              borderRadius: 10,
+              marginHorizontal: 2,
+            }}
+          >
+            <Icon
+              color="#fff"
+              name="volume-mute"
+              style={{
+                padding: 10,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
+
+      <TouchableOpacity
+        style={styles.createPhraseButton}
+        onPress={() => {
+          navigation.navigate("CreatePhrase");
+        }}
+      >
+        <Text style={{ color: "#fff", textAlign: "center", fontSize: 20 }}>
+          Abrir menu de palabras
+        </Text>
+      </TouchableOpacity>
 
       <View style={styles.tabContainer}>
         <Text style={styles.subtitle}>Categorias</Text>
@@ -100,7 +192,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
-    fontWeight: "500",
+    fontWeight: "400",
     padding: 12,
   },
   subtitle: {
@@ -112,7 +204,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 24,
+    padding: 10,
   },
   input: {
     width: "75%",
@@ -124,7 +216,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   createPhraseButton: {
-    marginLeft: 10,
+    margin: 10,
     padding: 10,
     borderRadius: 15,
     backgroundColor: "#e63946",
@@ -133,6 +225,26 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 10,
     marginBottom: 40,
+  },
+  text: {
+    textTransform: "capitalize",
+    fontWeight: 800,
+  },
+  wordContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#c1c1c1",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 10,
+  },
+  wordText: {
+    fontSize: 16,
+    color: "#000",
+  },
+  iconContainer: {
+    marginLeft: 40,
   },
 });
 
