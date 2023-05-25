@@ -93,4 +93,11 @@ export const commonPhrasesCategory = [
     secondaryColor: "#ffed73",
     selected: false,
   },
+  {
+    id: "sentimientos",
+    title: "Sentimientos",
+    color: "#ff6060",
+    secondaryColor: "#ff6060",
+    selected: false,
+  },
 ];

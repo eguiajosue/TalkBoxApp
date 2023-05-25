@@ -34,10 +34,10 @@ const layoutAnimationConfig = {
 
 const Home = ({ navigation }) => {
   const words = [
-    { id: 1, title: "hello" },
-    { id: 2, title: "my" },
-    { id: 3, title: "name" },
-    { id: 4, title: "is" },
+    { id: 1, title: "está" },
+    { id: 2, title: "sobre" },
+    { id: 3, title: "la" },
+    { id: 4, title: "mesa" },
   ];
 
   const route = useRoute();
