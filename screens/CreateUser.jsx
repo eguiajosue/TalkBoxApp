@@ -111,6 +111,16 @@ const CreateUser = ({ navigation }) => {
         <TouchableOpacity style={styles.button} onPress={register}>
           <Text style={{ color: "#fff", textAlign: "center" }}>Continuar</Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+          <Text
+            onPress={() => {
+              navigation.navigate("Home");
+            }}
+            style={{ color: "#000", textAlign: "center", marginTop: 20 }}
+          >
+            Omitir
+          </Text>
+        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
