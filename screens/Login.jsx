@@ -1,18 +1,14 @@
-import { StatusBar, StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { SocialIcon } from "@rneui/base";
+import { Title } from "../components/Login/Title";
+import { Icon } from "../components/Login/Icon";
+import { COLORS } from "../constants";
 
 const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>
-          <Text style={{ fontWeight: 200 }}>¡Bienvenido de vuelta a </Text>
-          <Text style={{ fontWeight: 700 }}>TalkBox</Text>
-        </Text>
-      </View>
+      <Title welcomeTo="¡Bienvenido de vuelta a" title="TalkBox" />
 
       <View style={styles.form}>
         <TextInput style={styles.input} placeholder="Correo Electronico" />
@@ -23,15 +19,7 @@ const Login = ({ navigation }) => {
             secureTextEntry={true}
           />
           <TouchableOpacity>
-            <Text
-              style={{
-                textAlign: "right",
-                marginTop: 10,
-                color: "#dc858b",
-              }}
-            >
-              ¿Olvidaste tu contraseña?
-            </Text>
+            <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
           </TouchableOpacity>
         </View>
 
@@ -44,12 +32,8 @@ const Login = ({ navigation }) => {
       </View>
 
       <View style={styles.socialMedia}>
-        <View style={styles.iconWrapper}>
-          <SocialIcon button type="google" />
-        </View>
-        <View style={styles.iconWrapper}>
-          <SocialIcon button type="facebook" />
-        </View>
+        <Icon type={"google"} />
+        <Icon type={"facebook"} />
       </View>
     </View>
   );
@@ -79,7 +63,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    backgroundColor: "#ededed",
+    backgroundColor: COLORS.secondary,
     padding: 10,
 
     borderRadius: 20,
@@ -87,7 +71,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#e63946",
+    backgroundColor: COLORS.primary,
     padding: 15,
 
     borderRadius: 10,
@@ -96,7 +80,7 @@ const styles = StyleSheet.create({
 
   textButton: {
     textAlign: "center",
-    color: "#fff",
+    color: COLORS.light,
   },
 
   socialMedia: {
@@ -104,7 +88,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  iconWrapper: {
-    marginHorizontal: 10,
+
+  forgotPassword: {
+    textAlign: "right",
+    marginTop: 10,
+    color: COLORS.error,
   },
 });
