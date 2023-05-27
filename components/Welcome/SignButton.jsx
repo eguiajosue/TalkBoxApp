@@ -1,5 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { COLORS } from "../../constants";
 
 /**
  *
@@ -20,6 +21,16 @@ export function SignButton({ title, onPress, type }) {
     }
   };
 
+  const getTextStyle = () => {
+    if (type === "login") {
+      return [styles.text, styles.loginText];
+    } else if (type === "signup") {
+      return [styles.text, styles.signUpText];
+    } else {
+      return styles.text;
+    }
+  };
+
   const handlePress = () => {
     if (onPress) {
       onPress();
@@ -28,7 +39,7 @@ export function SignButton({ title, onPress, type }) {
 
   return (
     <TouchableOpacity style={getButtonStyle()} onPress={handlePress}>
-      <Text style={{ color: "#fff" }}>{title}</Text>
+      <Text style={getTextStyle()}>{title}</Text>
     </TouchableOpacity>
   );
 }
@@ -42,10 +53,22 @@ const styles = StyleSheet.create({
   },
 
   loginButton: {
-    backgroundColor: "#e63946",
+    backgroundColor: COLORS.primary,
   },
 
   signupButton: {
     backgroundColor: "#e1e1e1",
+  },
+
+  text: {
+    fontSize: 15,
+  },
+
+  signUpText: {
+    color: COLORS.dark,
+  },
+
+  loginText: {
+    color: COLORS.light,
   },
 });

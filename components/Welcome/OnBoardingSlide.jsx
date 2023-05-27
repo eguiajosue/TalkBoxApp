@@ -7,6 +7,8 @@ import {
   useWindowDimensions,
 } from "react-native";
 
+import { COLORS } from "../../constants";
+
 export function OnBoardingSlide({ image, title, description }) {
   const { width } = useWindowDimensions();
 
@@ -38,7 +40,7 @@ export function OnBoardingSlide({ image, title, description }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.light,
   },
   title: {
     fontWeight: "800",

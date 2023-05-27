@@ -4,6 +4,7 @@ import AppIntroSlider from "react-native-app-intro-slider";
 import slides from "../data/slides";
 import { SignButton } from "../components/Welcome/SignButton";
 import { OnBoardingSlide } from "../components/Welcome/OnBoardingSlide";
+import { COLORS } from "../constants";
 
 const Welcome = ({ navigation }) => {
   _renderItem = ({ item }) => {
@@ -59,18 +60,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.light,
   },
   buttonCircle: {
     width: 40,
     height: 40,
-    backgroundColor: "#e63946",
+    backgroundColor: COLORS.primary,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
   },
   activeDotStyle: {
-    backgroundColor: "#e63946",
+    backgroundColor: COLORS.primary,
   },
   dotStyle: {
     backgroundColor: "rgba(0, 0, 0, .2)",
@@ -79,10 +80,10 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: "#ffff",
+    backgroundColor: COLORS.light,
   },
   noRegisterButton: {
-    backgroundColor: "#ffff",
+    backgroundColor: COLORS.light,
     padding: 10,
     marginBottom: 10,
   },
