@@ -19,6 +19,7 @@ import renderSeparator from "../components/renderSeparator";
 import commonPhrases from "../data/commonPhrases";
 import { useRoute } from "@react-navigation/native";
 import * as Speech from "expo-speech";
+import { AudioButton } from "../components/Home/AudioButton";
 
 const layoutAnimationConfig = {
   duration: 300,
@@ -127,22 +128,7 @@ const Home = ({ navigation }) => {
         />
 
         <View style={{ flexDirection: "row" }}>
-          <TouchableOpacity
-            onPress={() => speak(wordsString)}
-            style={{
-              backgroundColor: "#e63946",
-              borderRadius: 10,
-              marginHorizontal: 2,
-            }}
-          >
-            <Icon
-              color="#fff"
-              name="volume-up"
-              style={{
-                padding: 10,
-              }}
-            />
-          </TouchableOpacity>
+          <AudioButton />
           <TouchableOpacity
             onPress={() => muteVoice()}
             style={{
