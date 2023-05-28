@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Title } from "../components/Login/Title";
-import { Icon } from "../components/Login/Icon";
+import { Icon } from "../components/Icon";
 import { COLORS } from "../constants";
 
 const Login = ({ navigation }) => {

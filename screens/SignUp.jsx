@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import { SocialIcon } from "@rneui/base";
+import { Icon } from "../components/Icon";
+import { COLORS } from "../constants";
 
 const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -121,17 +122,11 @@ const SignUp = ({ navigation }) => {
               Crear cuenta
             </Text>
           </TouchableOpacity>
-
-          <SocialIcon
-            iconSize={25}
-            onPress={() => navigation.navigate("Home")}
-            button
-            light
-            style={{ width: "100%", marginTop: 20 }}
-            title="Registrarse con Google"
-            type="google"
-          />
         </View>
+      </View>
+      <View style={styles.socialMedia}>
+        <Icon type={"google"} />
+        <Icon type={"facebook"} />
       </View>
     </SafeAreaView>
   );
@@ -147,8 +142,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight,
-    padding: 20,
-    backgroundColor: "#fff",
+    justifyContent: "space-evenly",
+    alignItems: "center",
   },
   form: {
     display: "flex",
@@ -178,6 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e1e1e1",
     padding: 10,
     borderRadius: 12,
+    width: 350,
   },
   button: {
     backgroundColor: "#e63946",
@@ -185,6 +181,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: "100%",
     borderRadius: 15,
+  },
+  socialMedia: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
