@@ -39,24 +39,32 @@ const CommonPhrasesList = ({ data }) => {
 
   const styles = StyleSheet.create({
     button: {
-      padding: 10,
+      width: "50%",
+      height: 200,
       borderRadius: 10,
       marginVertical: 5,
+      marginHorizontal: 5,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
     text: {
-      textAlign: "right",
       textTransform: "uppercase",
-      fontSize: 20,
-      fontWeight: "500",
+      fontSize: 15,
+      fontWeight: "900",
+      textAlign: "center",
+      opacity: 0.5,
     },
   });
 
   return (
     <View style={styles.container}>
       <FlatList
+        key={"#"}
         data={data}
-        keyExtractor={(item) => item.id}
+        numColumns={2}
         renderItem={renderItem}
+        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
       />
     </View>

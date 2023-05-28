@@ -19,6 +19,7 @@ import renderSeparator from "../components/renderSeparator";
 import commonPhrases from "../data/commonPhrases";
 import { useRoute } from "@react-navigation/native";
 import * as Speech from "expo-speech";
+import { AudioButton } from "../components/Home/AudioButton";
 
 const layoutAnimationConfig = {
   duration: 300,
@@ -34,10 +35,10 @@ const layoutAnimationConfig = {
 
 const Home = ({ navigation }) => {
   const words = [
-    { id: 1, palabra: "Ipsum" },
-    { id: 2, palabra: "occaecat" },
-    { id: 3, palabra: "sint" },
-    { id: 4, palabra: "laborum" },
+    { id: 1, title: "está" },
+    { id: 2, title: "sobre" },
+    { id: 3, title: "la" },
+    { id: 4, title: "mesa" },
   ];
 
   const route = useRoute();
@@ -50,6 +51,8 @@ const Home = ({ navigation }) => {
 
   // Palabras en para realizar una frase personalizada
   const [wordsData, setWordsData] = useState(words);
+
+  const [disabled, setDisabled] = useState(false);
 
   const setStatusFilter = (status) => {
     if (status !== "todos") {
@@ -68,16 +71,25 @@ const Home = ({ navigation }) => {
     Speech.stop();
   };
 
+  const speak = (sentence) => {
+    Speech.speak(sentence);
+  };
+
   const deleteWordByID = (id) => {
     const filteredWords = wordsData.filter((word) => word.id !== id);
     setWordsData(filteredWords);
     LayoutAnimation.configureNext(layoutAnimationConfig);
   };
 
+  const wordsArray = wordsData.map((word) => word.title);
+
+  const wordsString = wordsArray.join(" ");
+  console.log(wordsString);
+
   const renderItem = ({ item }) => {
     return (
       <View style={styles.wordContainer}>
-        <Text style={styles.wordText}>Lorem</Text>
+        <Text style={styles.wordText}>{item.title}</Text>
         <TouchableOpacity
           style={styles.iconContainer}
           onPress={() => deleteWordByID(item.id)}
@@ -106,7 +118,7 @@ const Home = ({ navigation }) => {
 
       <View style={styles.words}>
         <FlatList
-          style={{ padding: 15 }}
+          style={{ paddingHorizontal: 0 }}
           data={wordsData}
           renderItem={renderItem}
           horizontal
@@ -116,21 +128,7 @@ const Home = ({ navigation }) => {
         />
 
         <View style={{ flexDirection: "row" }}>
-          <TouchableOpacity
-            style={{
-              backgroundColor: "#e63946",
-              borderRadius: 10,
-              marginHorizontal: 2,
-            }}
-          >
-            <Icon
-              color="#fff"
-              name="volume-up"
-              style={{
-                padding: 10,
-              }}
-            />
-          </TouchableOpacity>
+          <AudioButton />
           <TouchableOpacity
             onPress={() => muteVoice()}
             style={{
@@ -223,7 +221,6 @@ const styles = StyleSheet.create({
   },
   commonPhrasesContainer: {
     flex: 1,
-    paddingHorizontal: 10,
     marginBottom: 40,
   },
   text: {
