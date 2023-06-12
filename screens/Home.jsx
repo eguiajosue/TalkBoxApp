@@ -20,6 +20,7 @@ import commonPhrases from "../data/commonPhrases";
 import { useRoute } from "@react-navigation/native";
 import * as Speech from "expo-speech";
 import { AudioButton } from "../components/Home/AudioButton";
+import { WordCard } from "../components/Home/WordCard";
 
 const layoutAnimationConfig = {
   duration: 300,
@@ -88,15 +89,7 @@ const Home = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.wordContainer}>
-        <Text style={styles.wordText}>{item.title}</Text>
-        <TouchableOpacity
-          style={styles.iconContainer}
-          onPress={() => deleteWordByID(item.id)}
-        >
-          <Icon name="close" color="#fff" />
-        </TouchableOpacity>
-      </View>
+      <WordCard title={item.title} onPress={() => deleteWordByID(item.id)} />
     );
   };
 
@@ -128,23 +121,8 @@ const Home = ({ navigation }) => {
         />
 
         <View style={{ flexDirection: "row" }}>
-          <AudioButton />
-          <TouchableOpacity
-            onPress={() => muteVoice()}
-            style={{
-              backgroundColor: "#e63946",
-              borderRadius: 10,
-              marginHorizontal: 2,
-            }}
-          >
-            <Icon
-              color="#fff"
-              name="volume-mute"
-              style={{
-                padding: 10,
-              }}
-            />
-          </TouchableOpacity>
+          <AudioButton iconName="volume-up" />
+          <AudioButton iconName="volume-mute" />
         </View>
       </View>
 

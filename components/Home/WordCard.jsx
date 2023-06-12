@@ -3,20 +3,13 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Icon } from "@rneui/base";
 import { COLORS } from "../../constants";
 
-export function WordCard({ words }) {
-
-  const deleteWordByID = (id) => {
-    const filteredWords = wordsData.filter((word) => word.id !== id);
-    setWordsData(filteredWords);
-    LayoutAnimation.configureNext(layoutAnimationConfig);
-  };
-
+export function WordCard({ title, onPress }) {
   return (
     <View style={styles.wordContainer}>
-      <Text style={styles.wordText}>Lorem</Text>
+      <Text style={styles.wordText}>{title}</Text>
       <TouchableOpacity
         style={styles.iconContainer}
-        onPress={() => deleteWordByID(item.id)}
+        onPress={onPress}
       >
         <Icon name="close" color="#fff" />
       </TouchableOpacity>
