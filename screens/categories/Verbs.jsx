@@ -1,10 +1,6 @@
 import {
-  SafeAreaView,
   StyleSheet,
-  Text,
   View,
-  SectionList,
-  StatusBar,
   FlatList,
 } from "react-native";
 import React from "react";

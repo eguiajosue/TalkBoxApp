@@ -12,6 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "react-native";
 import { Icon } from "@rneui/base";
 import DropDownPicker from "react-native-dropdown-picker";
+import { COLORS } from "../constants";
 
 const CreateUser = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -109,14 +110,14 @@ const CreateUser = ({ navigation }) => {
 
       <View>
         <TouchableOpacity style={styles.button} onPress={register}>
-          <Text style={{ color: "#fff", textAlign: "center" }}>Continuar</Text>
+          <Text style={styles.continueButton}>Continuar</Text>
         </TouchableOpacity>
         <TouchableOpacity>
           <Text
             onPress={() => {
               navigation.navigate("Home");
             }}
-            style={{ color: "#000", textAlign: "center", marginTop: 20 }}
+            style={styles.skipButton}
           >
             Omitir
           </Text>
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight,
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.light,
     justifyContent: "space-evenly",
   },
   form: {
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   button: {
-    backgroundColor: "#e63946",
+    backgroundColor: COLORS.primary,
     padding: 15,
     marginTop: 30,
     borderRadius: 15,
@@ -174,6 +175,15 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     fontSize: 10,
     textAlign: "right",
+  },
+  continueButton: {
+    color: COLORS.light,
+    textAlign: "center",
+  },
+  skipButton: {
+    marginTop: 20,
+    color: COLORS.dark,
+    textAlign: "center",
   },
 });
 

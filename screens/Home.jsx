@@ -21,6 +21,7 @@ import { useRoute } from "@react-navigation/native";
 import * as Speech from "expo-speech";
 import { AudioButton } from "../components/Home/AudioButton";
 import { WordCard } from "../components/Home/WordCard";
+import { COLORS } from "../constants";
 
 const layoutAnimationConfig = {
   duration: 300,
@@ -95,9 +96,7 @@ const Home = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
-      >
+      <View style={styles.header}>
         <Avatar
           size={35}
           source={AvatarIcon}
@@ -132,7 +131,7 @@ const Home = ({ navigation }) => {
           navigation.navigate("CreatePhrase");
         }}
       >
-        <Text style={{ color: "#fff", textAlign: "center", fontSize: 20 }}>
+        <Text style={styles.textButton}>
           Abrir menu de palabras
         </Text>
       </TouchableOpacity>
@@ -166,6 +165,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight,
   },
+  header: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
   title: {
     fontSize: 25,
     fontWeight: "400",
@@ -186,7 +190,7 @@ const styles = StyleSheet.create({
     width: "75%",
     height: 50,
     borderRadius: 15,
-    backgroundColor: "#DBDBDB60",
+    backgroundColor: COLORS.secondary,
   },
   tabContainer: {
     paddingHorizontal: 10,
@@ -195,7 +199,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     borderRadius: 15,
-    backgroundColor: "#e63946",
+    backgroundColor: COLORS.primary,
   },
   commonPhrasesContainer: {
     flex: 1,
@@ -205,18 +209,23 @@ const styles = StyleSheet.create({
     textTransform: "capitalize",
     fontWeight: 800,
   },
+  textButton: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 20,
+  },
   wordContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#c1c1c1",
+    backgroundColor: COLORS.secondary,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 10,
   },
   wordText: {
     fontSize: 16,
-    color: "#000",
+    color: COLORS.dark,
   },
   iconContainer: {
     marginLeft: 40,

@@ -10,7 +10,7 @@ import {
 import React from "react";
 import Word from "../../components/Word";
 
-const Verbs = () => {
+const Adjetives = () => {
   const data = [
     { id: "1", title: "Jugar" },
     { id: "2", title: "Bailar" },
@@ -36,7 +36,7 @@ const Verbs = () => {
   );
 };
 
-export default Verbs;
+export default Adjetives;
 
 const styles = StyleSheet.create({
   container: {
